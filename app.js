@@ -3,10 +3,12 @@ const app = express();
 const mongoose = require("mongoose");
 const Listing = require("./models/listing.js");
 const path = require("path");
+const methodOverride = require("method-override");
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride("_method"));
 
 const mongoUrl = "mongodb://127.0.0.1:27017/wanderlust";
 
@@ -33,6 +35,16 @@ app.get("/listings/:id", async (req, res) => {
   let { id } = req.params;
   const listing = await Listing.findById(id);
   res.render("./listings/show.ejs", { listing });
+});
+
+app.get("/listing/new", (req, res) => {
+  res.render("./listings/new.ejs");
+});
+
+app.post("/listings", async (req, res) => {
+  let newListing = new Listing(req.body.listing);
+  await newListing.save();
+  res.redirect("/listings");
 });
 
 app.get("/", (req, res) => {
