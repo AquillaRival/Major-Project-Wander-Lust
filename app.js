@@ -30,10 +30,12 @@ app.get("/listings", async (req, res) => {
   res.render("./listings/index.ejs", { allListings });
 });
 
+// New Route
 app.get("/listing/new", (req, res) => {
   res.render("./listings/new.ejs");
 });
 
+// Create Route
 app.post("/listings", async (req, res) => {
   let newListing = new Listing(req.body.listing);
   await newListing.save();
@@ -47,12 +49,14 @@ app.get("/listings/:id", async (req, res) => {
   res.render("./listings/show.ejs", { listing });
 });
 
+// Edit Route
 app.get("/listings/:id/edit", async (req, res) => {
   let { id } = req.params;
   let listing = await Listing.findById(id);
   res.render("./listings/edit.ejs", { listing });
 });
 
+// Update Route
 app.put("/listings/:id", async (req, res) => {
   let { id } = req.params;
   let updatedListing = { ...req.body.listing };
@@ -60,6 +64,7 @@ app.put("/listings/:id", async (req, res) => {
   res.redirect(`/listings/${id}`);
 });
 
+// Destroy Routes
 app.delete("/listings/:id", async (req, res) => {
   let { id } = req.params;
   await Listing.findByIdAndDelete(id);
