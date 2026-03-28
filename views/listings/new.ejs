@@ -1,45 +1,78 @@
 <% layout("/layouts/boilerplate.ejs") %>
-<body>
-  <h3>Create New Listing</h3>
-  <form action="/listings" method="POST">
-    <label
-      >Title:
-      <input type="text" name="listing[title]" placeholder="eg: Ramya Stays"
-    /></label>
-    <br /><br />
-    <label
-      >Image:
-      <input
-        type="text"
-        name="listing[image]"
-        placeholder="eg: https//myphoto......"
-    /></label>
-    <br /><br />
-    <label
-      >Description:
-      <input
-        type="text"
-        name="listing[description]"
-        placeholder="eg: Serene Environment"
-    /></label>
-    <br /><br />
-    <label
-      >Price: <input type="number" name="listing[price]" placeholder="eg: 2800"
-    /></label>
-    <br /><br />
-    <label
-      >Location:
-      <input
-        type="text"
-        name="listing[location]"
-        placeholder="eg: Vrindavan, UP"
-    /></label>
-    <br /><br />
-    <label
-      >Country:
-      <input type="text" name="listing[country]" placeholder="eg: INDIA"
-    /></label>
-    <br /><br />
-    <button>Submit</button>
-  </form>
-</body>
+
+<div class="row">
+  <div class="col-8 offset-2">
+    <br />
+    <h3>Create New Listing</h3>
+    <form action="/listings" method="POST">
+      <div class="mb-3">
+        <label for="title" class="form-label">Title:</label>
+        <input
+          class="form-control"
+          type="text"
+          id="title"
+          name="listing[title]"
+          placeholder="eg: Ramya Stays"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="image" class="form-label">Image:</label>
+        <input
+          class="form-control"
+          type="text"
+          id="image"
+          name="listing[image]"
+          placeholder="eg: https//myphoto......"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="description" class="form-label">Description:</label>
+        <textarea
+          class="form-control"
+          type="text"
+          id="description"
+          name="listing[description]"
+          placeholder="eg: Serene Environment"
+        ></textarea>
+      </div>
+
+      <div class="mb-3">
+        <label for="price" class="form-label">Price:</label>
+        <input
+          class="form-control"
+          type="number"
+          id="price"
+          name="listing[price]"
+          placeholder="eg: 2800"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="location" class="form-label">Location:</label>
+        <input
+          class="form-control"
+          type="text"
+          id="location"
+          name="listing[location]"
+          placeholder="eg: Vrindavan, UP"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="country" class="form-label">Country:</label>
+        <input
+          class="form-control"
+          type="text"
+          id="country"
+          name="listing[country]"
+          placeholder="eg: INDIA"
+        />
+      </div>
+      <br />
+      <button class="btn btn-primary add-btn">Add</button>
+      <br /><br /><br />
+    </form>
+  </div>
+</div>
