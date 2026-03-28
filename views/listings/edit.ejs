@@ -1,53 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>WanderLust</title>
-  </head>
-  <body>
-    <h3>Create New Listing</h3>
-    <form action="/listings/<%= listing.id %>?_method=PUT" method="POST">
-      <label
-        >Title:
-        <input type="text" name="listing[title]" value="<%= listing.title %>"
-      /></label>
-      <br /><br />
-      <label
-        >Image:
-        <input type="text" name="listing[image]" value="<%= listing.image %>"
-      /></label>
-      <br /><br />
-      <label
-        >Description:
-        <input
-          type="text"
-          name="listing[description]"
-          value="<%= listing.description %>"
-      /></label>
-      <br /><br />
-      <label
-        >Price:
-        <input type="number" name="listing[price]" value="<%= listing.price %>"
-      /></label>
-      <br /><br />
-      <label
-        >Location:
-        <input
-          type="text"
-          name="listing[location]"
-          value="<%= listing.location %>"
-      /></label>
-      <br /><br />
-      <label
-        >Country:
-        <input
-          type="text"
-          name="listing[country]"
-          value="<%= listing.country %>"
-      /></label>
-      <br /><br />
-      <button>Submit</button>
-    </form>
-  </body>
-</html>
+<% layout("/layouts/boilerplate.ejs") %>
+<body>
+  <h3>Create New Listing</h3>
+  <form action="/listings/<%= listing.id %>?_method=PUT" method="POST">
+    <label
+      >Title:
+      <input type="text" name="listing[title]" value="<%= listing.title %>"
+    /></label>
+    <br /><br />
+    <label
+      >Image:
+      <input type="text" name="listing[image]" value="<%= listing.image %>"
+    /></label>
+    <br /><br />
+    <label
+      >Description:
+      <input
+        type="text"
+        name="listing[description]"
+        value="<%= listing.description %>"
+    /></label>
+    <br /><br />
+    <label
+      >Price:
+      <input type="number" name="listing[price]" value="<%= listing.price %>"
+    /></label>
+    <br /><br />
+    <label
+      >Location:
+      <input
+        type="text"
+        name="listing[location]"
+        value="<%= listing.location %>"
+    /></label>
+    <br /><br />
+    <label
+      >Country:
+      <input type="text" name="listing[country]" value="<%= listing.country %>"
+    /></label>
+    <br /><br />
+    <button>Submit</button>
+  </form>
+</body>
