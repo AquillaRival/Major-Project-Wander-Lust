@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
-const reviews = require("./reviews");
 const Schema = mongoose.Schema;
-const review = require("./reviews.js");
+const review = require("./reviewsModel.js");
 
 const listingSchema = new Schema({
   title: {
@@ -10,13 +9,8 @@ const listingSchema = new Schema({
   },
   description: String,
   image: {
-    type: String,
-    default:
-      "https://unsplash.com/illustrations/a-drawing-of-a-bear-with-a-thought-bubble-above-his-head-phJ3PYitwjA",
-    set: (v) =>
-      v === ""
-        ? "https://unsplash.com/illustrations/a-drawing-of-a-bear-with-a-thought-bubble-above-his-head-phJ3PYitwjA"
-        : v,
+    url: String,
+    filename: String,
   },
   price: Number,
   location: String,
