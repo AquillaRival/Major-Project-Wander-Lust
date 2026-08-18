@@ -8,6 +8,11 @@ const listingSchema = Joi.object({
     price: Joi.number().min(0).required(),
     country: Joi.string().required(),
     image: Joi.string().allow("", null),
+    // Added geometry schema to allow map pin coordinates from form
+    geometry: Joi.object({
+      type: Joi.string().valid("Point"),
+      coordinates: Joi.array().items(Joi.number()),
+    }).optional(),
   }).required(),
 });
 

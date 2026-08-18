@@ -117,9 +117,9 @@
     <% } %>
 
     <hr />
-
-    <p><b>All Reviews</b></p>
+    <% if (listing.reviews.length > 0) { %>
     <div class="row">
+      <p><b>All Reviews</b></p>
       <% for(review of listing.reviews) { %>
       <div class="card col-5 mb-3 ms-3">
         <div class="card-body mt-2">
@@ -142,5 +142,22 @@
       </div>
       <% } %>
     </div>
+    <% } %>
+  </div>
+  <div class="col-6 offset-3 mb-3">
+    <h3>Where You'll Be</h3>
+    <div id="map"></div>
   </div>
 </div>
+<script>
+  // 1. Get the geometry object safely from Express/EJS
+  const listingGeometry = <%- JSON.stringify(listing.geometry || null) %>;
+  const listingTitle = <%- JSON.stringify(listing.title || "Listing Location") %>;
+  const listingLocation = <%- JSON.stringify(listing.location || "") %>;
+</script>
+
+<script>
+  const initialCoordinates = [77.209, 28.6139]; // Default center (e.g. New Delhi)
+</script>
+
+<script src="/js/map.js"></script>
