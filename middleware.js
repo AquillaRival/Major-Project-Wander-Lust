@@ -39,22 +39,32 @@ module.exports.saveRedirectUrl = (req, res, next) => {
   next();
 };
 
-module.exports.isOwner = async (req, res, next) => {
+const wrapAsync = require("./utils/wrapAsync.js");
+
+module.exports.isOwner = wrapAsync(async (req, res, next) => {
   let { id } = req.params;
   let listings = await Listing.findById(id);
+  if (!listings) {
+    req.flash("error", "Listing does not exist.");
+    return res.redirect("/listings");
+  }
   if (!listings.owner.equals(res.locals.currUser._id)) {
     req.flash("error", "You don't have permission to edit.");
     return res.redirect(`/listings/${id}`);
   }
   next();
-};
+});
 
-module.exports.isReviewAuthor = async (req, res, next) => {
+module.exports.isReviewAuthor = wrapAsync(async (req, res, next) => {
   let { reviewId, id } = req.params;
   let review = await Review.findById(reviewId);
+  if (!review) {
+    req.flash("error", "Review does not exist.");
+    return res.redirect(`/listings/${id}`);
+  }
   if (!review.author.equals(res.locals.currUser._id)) {
     req.flash("error", "You are not the author of this review");
     return res.redirect(`/listings/${id}`);
   }
   next();
-};
+});
